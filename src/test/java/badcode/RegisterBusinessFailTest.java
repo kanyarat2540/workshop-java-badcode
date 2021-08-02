@@ -3,11 +3,9 @@ package badcode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class RegisterBusinessTest {
+class RegisterBusinessFailTest {
 
     @Test
     @DisplayName("Can get email main")
@@ -109,25 +107,6 @@ class RegisterBusinessTest {
             registerBusiness.register(null, speaker);
         });
         assertEquals("Speaker doesn't meet our standard rules.", exception.getMessage());
-    }
-
-    @Test
-    @DisplayName("saveSpeaker success")
-    public void case012() {
-        RegisterBusiness registerBusiness = new RegisterBusiness();
-        Speaker speaker = new Speaker();
-        speaker.setFirstName("kanyarat");
-        speaker.setLastName("nasomboon");
-        speaker.setEmail("kanyarat@gmail.com");
-        speaker.setExp(5);
-        SpeakerRepository repository = new SpeakerRepository() {
-            @Override
-            public Integer saveSpeaker(Speaker speaker) {
-                return 1;
-            }
-        };
-        Integer actualresult = registerBusiness.register(repository, speaker);
-        assertEquals(1, actualresult);
     }
 
     @Test
